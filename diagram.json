@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "author": "Antigravity",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-nano",
+      "id": "nano",
+      "top": -20,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_police",
+      "top": -150,
+      "left": -230,
+      "attrs": { "color": "red", "label": "POLICE" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_fire",
+      "top": -70,
+      "left": -230,
+      "attrs": { "color": "orange", "label": "FIRE" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_med",
+      "top": 10,
+      "left": -230,
+      "attrs": { "color": "blue", "label": "MEDICAL" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_cancel",
+      "top": 90,
+      "left": -230,
+      "attrs": { "color": "grey", "label": "CANCEL" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -140,
+      "left": 160,
+      "attrs": { "hasVolume": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 0,
+      "left": 170,
+      "attrs": { "color": "green", "label": "ARMED" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 15,
+      "left": 230,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 80,
+      "left": 170,
+      "attrs": { "color": "red", "label": "ALERT" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 95,
+      "left": 230,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "btn_police:2.1", "nano:D2", "red", [ "h40", "v80" ] ],
+    [ "btn_police:1.1", "nano:GND.1", "black", [ "h20", "v120" ] ],
+    [ "btn_fire:2.1", "nano:D3", "orange", [ "h40", "v40" ] ],
+    [ "btn_fire:1.1", "nano:GND.1", "black", [ "h20", "v80" ] ],
+    [ "btn_med:2.1", "nano:D4", "blue", [ "h40", "v0" ] ],
+    [ "btn_med:1.1", "nano:GND.1", "black", [ "h20", "v40" ] ],
+    [ "btn_cancel:2.1", "nano:D5", "grey", [ "h40", "v-40" ] ],
+    [ "btn_cancel:1.1", "nano:GND.1", "black", [ "h20", "v0" ] ],
+    [ "bz1:2", "nano:D7", "purple", [ "v40", "h-100" ] ],
+    [ "bz1:1", "nano:GND.1", "black", [ "v60", "h-140" ] ],
+    [ "nano:D12", "r1:1", "green", [ "h20", "v-40" ] ],
+    [ "r1:2", "led_green:A", "green", [ "v-10", "h-40" ] ],
+    [ "led_green:C", "nano:GND.1", "black", [ "v30", "h-130" ] ],
+    [ "nano:D13", "r2:1", "red", [ "h20", "v-40" ] ],
+    [ "r2:2", "led_red:A", "red", [ "v-10", "h-40" ] ],
+    [ "led_red:C", "nano:GND.1", "black", [ "v30", "h-130" ] ]
+  ],
+  "dependencies": {}
+}
+

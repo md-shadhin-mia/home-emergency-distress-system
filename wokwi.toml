@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/nano_simulation/firmware.hex'
+elf = '.pio/build/nano_simulation/firmware.elf'
+
