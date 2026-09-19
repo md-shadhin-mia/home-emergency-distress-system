@@ -30,13 +30,15 @@ The device operates on an independent **3.7V 18650 Lithium-Ion battery backup wi
 
 Watch the complete emergency trigger, 5-second abort countdown, backup SMS generation, cellular call dialing, and automated audio injection sequence running in the simulation:
 
-https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4
-
 <div align="center">
-  <video src="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4" controls="controls" width="100%" style="max-width: 800px; border-radius: 8px;">
+  <video src="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4" poster="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/simulation_preview.jpg" controls="controls" width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
     Your browser does not support the video tag.
   </video>
-  <p><em>▶️ <strong><a href="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4">Direct Link: Click here to play or download the full simulation video (MP4)</a></strong></em></p>
+  <br><br>
+  <a href="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4">
+    <img src="docs/simulation_preview.jpg" alt="Click to Watch Simulation Video" width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+  </a>
+  <p><em>▶️ <strong><a href="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4">Click image or link to play the full simulation video (42s MP4)</a></strong></em></p>
 </div>
 
 ---
@@ -259,14 +261,44 @@ Pre-compiled binaries and step-by-step schematics are located in the [`proteus/`
 
 #### Quick Steps:
 1. Place an **Arduino Nano** (or ATmega328P @ 16MHz) in ISIS.
-2. Wire buttons to D2, D3, D4, D5 (connecting to GND).
-3. Connect a **Virtual Terminal** at **9600 baud** (Nano TX D1 ➔ Terminal RXD, Nano RX D0 ➔ Terminal TXD).
+2. Wire buttons to D2, D3, D4, D5 (connecting directly to GND using internal `INPUT_PULLUP`).
+3. Connect a **Virtual Terminal** at **9600 baud**:
+   - **Cross-connect Serial**: Nano **`TX / D1`** ➔ Virtual Terminal **`RXD`**; Nano **`RX / D0`** ➔ Virtual Terminal **`TXD`**.
 4. Double-click the Nano, load `proteus/firmware_simulation.hex` into **Program File**, and press **Play**.
 
 ### 2. Wokwi Simulator
 The project contains [`wokwi.toml`](wokwi.toml) and [`diagram.json`](diagram.json):
 - In **VS Code**: Install the Wokwi extension, compile (`pio run -e nano_simulation`), open `diagram.json`, and click **Play**.
 - In **Browser**: Copy `diagram.json` into [wokwi.com/arduino/new](https://wokwi.com/arduino/new).
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── include/
+│   ├── config.h            # Centralized numbers, address, pins & timing parameters
+│   ├── sim800l.h           # SIM800L driver header (AltSoftSerial & AT+CLCC)
+│   ├── dfplayer.h          # DFPlayer Mini driver header (SoftwareSerial & BUSY pin)
+│   └── buzzer.h            # Piezo sounder alert engine
+├── src/
+│   ├── main.cpp            # FSM controller, button debouncer & dispatch coordinator
+│   ├── sim800l.cpp         # SIM800L modem implementation & cellular engine
+│   ├── dfplayer.cpp        # DFPlayer Mini serial protocol implementation
+│   └── buzzer.cpp          # Non-blocking audio feedback patterns
+├── proteus/
+│   ├── PROTEUS_GUIDE.md    # Step-by-step ISIS schematic & setup documentation
+│   ├── firmware_simulation.hex # Pre-compiled simulation hex for Proteus
+│   ├── firmware_production.hex # Production hex for physical hardware flashing
+│   └── firmware_simulation.elf # Debug symbols
+├── docs/
+│   ├── emergency_call_simulation.mp4 # 42s trimmed simulation demonstration video
+│   └── simulation_preview.jpg        # High-resolution video poster preview
+├── diagram.json            # Interactive Wokwi circuit diagram
+├── wokwi.toml              # Wokwi simulator configuration
+├── platformio.ini          # PlatformIO project environment definitions
+└── README.md               # Master system documentation
+```
 
 ---
 
