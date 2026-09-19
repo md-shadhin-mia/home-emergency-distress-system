@@ -26,6 +26,21 @@ The device operates on an independent **3.7V 18650 Lithium-Ion battery backup wi
 
 ---
 
+## 🎬 Live Simulation Demonstration
+
+Watch the complete emergency trigger, 5-second abort countdown, backup SMS generation, cellular call dialing, and automated audio injection sequence running in the simulation:
+
+https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4
+
+<div align="center">
+  <video src="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4" controls="controls" width="100%" style="max-width: 800px; border-radius: 8px;">
+    Your browser does not support the video tag.
+  </video>
+  <p><em>▶️ <strong><a href="https://github.com/md-shadhin-mia/home-emergency-distress-system/raw/main/docs/emergency_call_simulation.mp4">Direct Link: Click here to play or download the full simulation video (MP4)</a></strong></em></p>
+</div>
+
+---
+
 ## 🚨 Problem Statement
 
 During high-stress events, structural fires, acute medical emergencies, or home invasions:
